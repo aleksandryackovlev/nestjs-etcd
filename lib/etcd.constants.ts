@@ -1,2 +1,3 @@
-export const ETCD_CONNECTION = 'ETCD_CONNECTION';
-export const ETCD_MODULE_OPTIONS = 'ETCD_MODULE_OPTIONS';
+export const ETCD_MODULE_ID = 'EtcdModuleId';
+export const ETCD_MODULE_OPTIONS = 'EtcdModuleOptions';
+export const DEFAULT_CLIENT_NAME = 'default';
