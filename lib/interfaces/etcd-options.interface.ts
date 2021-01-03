@@ -3,7 +3,7 @@ import { Type } from '@nestjs/common';
 import { ModuleMetadata } from '@nestjs/common/interfaces';
 import { IOptions } from 'etcd3';
 
-export type EtcdModuleOptions = IOptions;
+export type EtcdModuleOptions = IOptions & { name?: string };
 
 export interface EtcdOptionsFactory {
   createEtcdOptions(connectionName?: string): Promise<EtcdModuleOptions> | EtcdModuleOptions;
