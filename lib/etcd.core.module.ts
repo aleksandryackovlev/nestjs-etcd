@@ -1,5 +1,5 @@
 import { DynamicModule, Module, Provider, Type, Global } from '@nestjs/common';
-import { Etcd3 } from 'etcd3';
+import { Etcd3, IOptions } from 'etcd3';
 
 import {
   EtcdModuleAsyncOptions,
@@ -7,7 +7,9 @@ import {
   EtcdOptionsFactory,
 } from './interfaces/etcd-options.interface';
 
-import { ETCD_CONNECTION, ETCD_MODULE_OPTIONS } from './etcd.constants';
+import { getClientToken } from './etcd.utils';
+
+import { ETCD_MODULE_OPTIONS } from './etcd.constants';
 
 @Global()
 @Module({})
@@ -19,8 +21,8 @@ export class EtcdCoreModule {
     };
 
     const connectionProvider = {
-      provide: ETCD_CONNECTION,
-      useValue: new Etcd3(options),
+      provide: getClientToken(options) as string,
+      useValue: new Etcd3(options as IOptions),
     };
 
     return {
@@ -32,9 +34,9 @@ export class EtcdCoreModule {
 
   static forRootAsync(options: EtcdModuleAsyncOptions): DynamicModule {
     const connectionProvider = {
-      provide: ETCD_CONNECTION,
+      provide: getClientToken(options as EtcdModuleOptions) as string,
       useFactory: (etcdOptions: EtcdModuleOptions) => {
-        return new Etcd3(etcdOptions);
+        return new Etcd3(etcdOptions as IOptions);
       },
       inject: [ETCD_MODULE_OPTIONS],
     };
