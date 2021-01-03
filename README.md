@@ -30,3 +30,8 @@ Please take a moment to read our contributing guidelines if you haven't yet done
 ## License
 
 [MIT](./LICENSE)
+
+[npm]: https://img.shields.io/npm/v/nestjs-etcd.svg
+[npm-url]: https://npmjs.com/package/nestjs-etcd
+[deps]: https://david-dm.org/aleksandryackovlev/nestjs-etcd.svg
+[deps-url]: https://david-dm.org/aleksandryackovlev/nestjs-etcd
