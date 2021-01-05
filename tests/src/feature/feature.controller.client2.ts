@@ -13,7 +13,7 @@ export class FeatureControllerClient2 {
   }
 
   @Get()
-  findAll(): Promise<Feature> {
+  findAll(): Promise<Feature[]> {
     return this.featureService.findAll();
   }
 
