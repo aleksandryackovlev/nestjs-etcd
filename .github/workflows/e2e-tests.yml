@@ -1,5 +1,5 @@
 # This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
-name: Node.js CI
+name: nestjs-etcd e2e
 
 on: [ push, pull_request ]
 
@@ -14,12 +14,18 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Setup Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: docker-compose -f tools/docker/docker-compose.yml --project-directory ./ up -d
-    - run: yarn install --frozen-lockfile
-    - run: ./third_party/wait-for-it.sh 0.0.0.0:2379
-    - run: ./third_party/wait-for-it.sh 0.0.0.0:2381
-    - run: yarn test
+    - name: Setup etcd
+      run: |
+        docker-compose -f tools/docker/docker-compose.yml --project-directory ./ up -d
+        ./third_party/wait-for-it.sh 0.0.0.0:2379
+        ./third_party/wait-for-it.sh 0.0.0.0:2381
+    - name: Run e2e tests
+      run: |
+        yarn install --frozen-lockfile
+        yarn test
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v1
