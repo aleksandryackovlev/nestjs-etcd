@@ -5,14 +5,14 @@ import { FeatureModule } from './feature/feature.module';
 
 @Module({
   imports: [
-    FeatureModule.forRootAsync({
+    EtcdModule.forRootAsync({
       useFactory: () => ({
-        hosts: `http://etcd0:2379`,
+        hosts: `http://0.0.0.0:2379`,
       }),
     }),
     EtcdModule.forRoot({
       name: 'client_2',
-      hosts: `http://etcd0:2379`,
+      hosts: `http://0.0.0.0:2381`,
     }),
     FeatureModule,
   ],
