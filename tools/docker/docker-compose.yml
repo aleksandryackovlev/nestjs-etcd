@@ -27,19 +27,19 @@ services:
     command:
       - /usr/local/bin/etcd
       -  --name
-      - etcd0
+      - etcd1
       - --data-dir
       - /etcd-data
       - --advertise-client-urls
-      - http://etcd0:2381
+      - http://etcd1:2381
       - --listen-client-urls
       - http://0.0.0.0:2381
       -  --initial-advertise-peer-urls
-      - http://etcd0:2382
+      - http://etcd1:2382
       - --listen-peer-urls
       - http://0.0.0.0:2382
       - --initial-cluster
-      - etcd0=http://etcd0:2382
+      - etcd1=http://etcd1:2382
     ports:
       - "2381:2381"
       - "2382:2382"
