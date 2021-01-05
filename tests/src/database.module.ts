@@ -9,11 +9,11 @@ export class DatabaseModule {
       module: DatabaseModule,
       imports: [
         EtcdModule.forRoot({
-          hosts: `http://etcd0:2379`,
+          hosts: `http://0.0.0.0:2379`,
         }),
         EtcdModule.forRoot({
           name: 'client_2',
-          hosts: `http://etcd0:2379`,
+          hosts: `http://0.0.0.0:2381`,
         }),
       ],
     };
