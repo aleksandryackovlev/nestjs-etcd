@@ -11,7 +11,7 @@
     "build:ts": "tsc -p configs/tsconfig.json",
     "lint": "eslint --ext=ts .",
     "pretest": "npm run lint",
-    "test": "jest --forceExit --runInBand --rootDir ./ --config ./configs/jest.config.js --collectCoverageFrom=\"src/**/*.ts\" --coverage --verbose",
+    "test": "jest --forceExit --runInBand --rootDir ./ --config ./configs/jest.config.js --collectCoverageFrom=\"lib/**/*.ts\" --coverage --verbose",
     "test:watch": "jest --runInBand --rootDir ./ --config ./configs/jest.config.js --forceExit --verbose  --watchAll",
     "security": "npm audit",
     "release": "standard-version",
