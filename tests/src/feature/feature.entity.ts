@@ -1,5 +1,5 @@
-export class Feature {
+export type Feature = {
   key: string;
 
   value: string;
-}
+};

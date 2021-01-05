@@ -6,11 +6,11 @@ import { InjectClient } from '../../../lib';
 import { Feature } from './feature.entity';
 
 @Injectable()
-export class PhotoService {
+export class FeatureService {
   constructor(@InjectClient() private readonly client: Etcd3) {}
 
   async find(key: string): Promise<Feature> {
-    const value = await this.etcdClient.get(key).string();
+    const value = await this.client.get(key).string();
 
     if (!value) {
       throw new NotFoundException();
@@ -29,7 +29,7 @@ export class PhotoService {
   }
 
   async create(feature: Feature): Promise<Feature> {
-    await this.etcdClient.put(feature.key).value(feature.value);
+    await this.client.put(feature.key).value(feature.value);
 
     return feature;
   }
