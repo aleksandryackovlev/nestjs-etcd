@@ -7,7 +7,7 @@ import { FeatureModule } from './feature/feature.module';
 class ConfigService implements EtcdOptionsFactory {
   createEtcdOptions(): EtcdModuleOptions {
     return {
-      hosts: `http://etcd0:2379`,
+      hosts: `http://0.0.0.0:2379`,
     };
   }
 }
@@ -19,7 +19,7 @@ class ConfigService implements EtcdOptionsFactory {
     }),
     EtcdModule.forRoot({
       name: 'client_2',
-      hosts: `http://etcd0:2379`,
+      hosts: `http://0.0.0.0:2381`,
     }),
     FeatureModule,
   ],
