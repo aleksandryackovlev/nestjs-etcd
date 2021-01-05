@@ -1,11 +1,11 @@
 import { Controller, Get, Post, Delete, Body, Param } from '@nestjs/common';
 
-import { FeatureService } from './feature.service';
+import { FeatureServiceClient2 } from './feature.service.client2';
 import { Feature } from './feature.entity';
 
-@Controller('feature/default')
-export class FeatureController {
-  constructor(private readonly featureService: FeatureService) {}
+@Controller('feature/client2')
+export class FeatureControllerClient2 {
+  constructor(private readonly featureService: FeatureServiceClient2) {}
 
   @Get(':id')
   find(@Param('id') key: string): Promise<Feature> {

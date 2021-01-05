@@ -6,8 +6,8 @@ import { InjectClient } from '../../../lib';
 import { Feature } from './feature.entity';
 
 @Injectable()
-export class FeatureService {
-  constructor(@InjectClient() private readonly client: Etcd3) {}
+export class FeatureServiceClient2 {
+  constructor(@InjectClient('client_2') private readonly client: Etcd3) {}
 
   async find(key: string): Promise<Feature> {
     const value = await this.client.get(key).string();
