@@ -18,6 +18,8 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: docker-compose -f tools/docker/docker-compose.yml --project-directory ./ up
+    - run: docker-compose -f tools/docker/docker-compose.yml --project-directory ./ up -d
     - run: yarn install --frozen-lockfile
+    - run: ./third_party/wait-for-it.sh 0.0.0.0:2379
+    - run: ./third_party/wait-for-it.sh 0.0.0.0:2381
     - run: yarn test
