@@ -21,6 +21,61 @@
 $ npm i --save nestjs-etcd
 ```
 
+### Getting Started
+To register the EtcdModule in `app.module.ts`
+
+```typescript
+import { Module } from '@nestjs/common';
+import { EtcdModule} from 'nestjs-etcd';
+
+@Module({
+    imports: [
+        EtcdModule.forRoot({
+            name: 'client_name', // optional, default to 'default'
+            hosts: `http://0.0.0.0:2379`,
+        }),
+    ],
+})
+export class AppModule {}
+```
+With Async
+```typescript
+import { Module } from '@nestjs/common';
+import { EtcdModule} from 'nestjs-etcd';
+
+@Module({
+    imports: [
+        EtcdModule.forRootAsync({
+                name: 'client_name', // optional, default to 'default'
+                useFactory: (configService: ConfigService) => ({
+                hosts: configService.get('hosts'),
+            }),
+            inject:[ConfigService],
+        }),
+    ],
+})
+export class AppModule {}
+```
+Module supports all the options for [Etcd3](https://www.npmjs.com/package/etcd3) package (see https://microsoft.github.io/etcd3/interfaces/ioptions.html):
+```typescript
+type EtcdModuleOptions = IOptions & { name?: string }
+```
+### Usage
+```typescript
+import { Injectable } from '@nestjs/common';
+import { Etcd3 } from 'etcd3';
+import { InjectClient } from 'nestjs-etcd';
+
+@Injectable()
+export class TestService {
+    // client_name is optional for InjectClient, default to 'default'
+    constructor(@InjectClient('client_name') private readonly client: Etcd3) {}
+    
+    find(key: string): Promise<string> {
+        return this.client.get(key).string();
+    }
+}
+```
 ## Contributing
 
 Please take a moment to read our contributing guidelines if you haven't yet done so.
