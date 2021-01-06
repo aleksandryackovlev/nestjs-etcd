@@ -8,7 +8,7 @@
 [![npm][npm]][npm-url]
 [![deps][deps]][deps-url]
 [![Build Status](https://travis-ci.org/aleksandryackovlev/nestjs-etcd.svg?branch=master)](https://travis-ci.org/aleksandryackovlev/nestjs-etcd)
-[![codecov](https://codecov.io/gh/aleksandryackovlev/nestjs-etcd/branch/master/graph/badge.svg)](https://codecov.io/gh/aleksandryackovlev/nestjs-etcd)
+[![codecov](https://codecov.io/gh/aleksandryackovlev/nestjs-etcd/branch/main/graph/badge.svg)](https://codecov.io/gh/aleksandryackovlev/nestjs-etcd)
 [![size](https://packagephobia.now.sh/badge?p=nestjs-etcd)](https://packagephobia.now.sh/result?p=nestjs-etcd)
 
 ## Description
