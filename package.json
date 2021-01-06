@@ -3,9 +3,6 @@
   "version": "0.1.0",
   "description": "Etcd3 module for Nest framework",
   "main": "dist/index.js",
-  "directories": {
-    "lib": "lib"
-  },
   "scripts": {
     "build": "rm -rf dist && yarn build:ts",
     "build:ts": "tsc -p configs/tsconfig.json",
@@ -35,11 +32,7 @@
     "url": "https://github.com/aleksandryackovlev/nestjs-etcd/issues"
   },
   "homepage": "https://github.com/aleksandryackovlev/nestjs-etcd#readme",
-  "files": [
-    "dist/",
-    "lib/",
-    "index.js"
-  ],
+  "files": [ "dist/" ],
   "dependencies": {
     "etcd3": "^1.1.0"
   },
