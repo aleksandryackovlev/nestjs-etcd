@@ -1,5 +1,5 @@
 # This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
-name: nestjs-etcd e2e
+name: build
 
 on: [ push, pull_request ]
 
