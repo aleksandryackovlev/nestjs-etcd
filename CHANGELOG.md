@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/aleksandryackovlev/nestjs-etcd/compare/v0.1.1...v0.2.0) (2021-01-07)
+
+
+### Features
+
+* **options:** add namespace to module options ([836a3ec](https://github.com/aleksandryackovlev/nestjs-etcd/commit/836a3ecdea504f4904a19c245bcfc1cadbdff05d))
+* **utils:** export utils from the module ([fe640ac](https://github.com/aleksandryackovlev/nestjs-etcd/commit/fe640acb8dc19bd2ddcd37d642cb7a0576bbaa3a))
+
 ### [0.1.1](https://github.com/aleksandryackovlev/nestjs-etcd/compare/v0.1.0...v0.1.1) (2021-01-06)
 
 ## 0.1.0 (2021-01-06)
