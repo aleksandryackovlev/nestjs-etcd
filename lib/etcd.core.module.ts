@@ -20,9 +20,11 @@ export class EtcdCoreModule {
       useValue: options,
     };
 
+    const client = new Etcd3(options as IOptions);
+
     const connectionProvider = {
       provide: getClientToken(options) as string,
-      useValue: new Etcd3(options as IOptions),
+      useValue: options.namespace ? client.namespace(options.namespace) : client,
     };
 
     return {
@@ -36,7 +38,9 @@ export class EtcdCoreModule {
     const connectionProvider = {
       provide: getClientToken(options as EtcdModuleOptions) as string,
       useFactory: (etcdOptions: EtcdModuleOptions) => {
-        return new Etcd3(etcdOptions as IOptions);
+        const client = new Etcd3(etcdOptions as IOptions);
+
+        return etcdOptions.namespace ? client.namespace(etcdOptions.namespace) : client;
       },
       inject: [ETCD_MODULE_OPTIONS],
     };
